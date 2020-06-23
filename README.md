@@ -21,7 +21,7 @@ _*argument_ = argument is optional.
 **value** = the default value.
 
 ## Important
-- [Codeline](#Line-Variable)
+- [Events](#Line-Variable)
 - [Optional](#Optional-Variables)
 - [Actions](#Actions)
 - [Building](#Building)
@@ -35,7 +35,9 @@ _*argument_ = argument is optional.
 - [IFs](#IF-Variable)
 - [Else](#Else)
 - [Repeat](#Repeat)
-[Misc Section](#Misc)
+## Misc
+- [Call Functions](#Calling-Functions)
+- [Tags](#Tags)
 
 # Important
 To start a Netherrack program you must first import netherrack. You can do this with `import netherrack`, or to have a special variable name: `import netherrack as df`.
