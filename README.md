@@ -65,7 +65,7 @@ It's also recommened to set up some variables, although it is purely up to you. 
 
 `line.playerAction`, `line.ifVar`, `line.setVar`, `etc`.
 ## Actions
-Most codeblocks require the `action` parameter, followed by the chest parameters. Valid action codeblocks are `playerAction`, `gameAction` and `setVar`.
+Most codeblocks require the `action` parameter, followed by the chest parameters. Valid action codeblocks are `playerAction`, `gameAction`, `entityAction`, `Control` and `setVar`.
 ### Usage
 ```py
 <line>.playerAction("SendMessage", "This supports numbers!", 1337)
@@ -116,6 +116,21 @@ loc = Location(15.5, 70, 20)
 line = df.Line('event', 'Join')
 line.playerAction("Teleport", loc)
 ```
+## Game Value
+Represents a Game Value variable.
+### Class
+```py
+GameValue(type, *target)
+```
+- type - The name of the value.
+- _*target_ - The target of the value, defaults to **Default**.
+The `GameValue.target` function can set the target even after initialisation.
+### Usage
+```py
+line = df.Line("process", "loop")
+line.playerAction("ActionBar", "There are", GameValue("Player Count"), "players online!")
+```
+
 ## Particle
 Represents a particle item in-game.
 ### Class
@@ -218,6 +233,10 @@ repeat("Multiple", 10)
 line.playerAction("SendMessage", "This is the power of repeats!")
 line.close()
 ```
+
+# Other Codeblocks
+## Select Object
+Coming soon.
 
 # Misc
 ## Calling functions
