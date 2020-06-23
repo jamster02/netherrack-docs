@@ -20,13 +20,16 @@ print(cmd)
 Netherrack is meant to be used in parallel with DFs coding system. This is because _some_ things are easier to do in text-based programming, while others are not.
 ### When you SHOULD NOT use Netherrack
 - Inventory GUIs
-- Basic Systems
+- Basic Systems & Tag-intensive stuff
+- Mob spawning
+- Location checks
 - etc
 ### When you SHOULD use Netherrack
 - Quest / XP Systems
 - Dialogue
 - Tedious tasks with multiple outcomes
 - Heavy calculations
+- Encryption & Complicated text manipulation
 - etc
 # Reference
 _*argument_ = argument is optional.
