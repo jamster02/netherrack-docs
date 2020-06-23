@@ -52,6 +52,7 @@ _*argument_ = argument is optional.
 - [Repeat](#Repeat)
 ## Misc
 - [Call Functions](#Calling-Functions)
+- [Select Object](#Select-Object)
 - [Tags](#Tags)
 
 # Important
@@ -234,11 +235,9 @@ line.playerAction("SendMessage", "This is the power of repeats!")
 line.close()
 ```
 
-# Other Codeblocks
-## Select Object
-Coming soon.
-
 # Misc
+## Select Object
+Coming soon!
 ## Calling functions
 It's possible to call functions and processes using `line.callFunc(name)` and `line.callProc(name)`.
 ## Tags
