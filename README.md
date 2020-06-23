@@ -163,7 +163,7 @@ Else can be used at the end of any close statement like so:
 ```py
 line.ifPlayer('isSprinting')
 player("SendMessage", "You jumped while sprinting!")
-line.close().else()
+line.close()._else()
 player("SendMessage", "You are not spriniting!")
 line.close()
 ```
