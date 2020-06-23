@@ -1,5 +1,5 @@
 # Netherrack
-Welcome to the Netherrack documentation. Netherrack is a tool to convert Python code into DF code templates. This project is based on [Prismarine](https://dfprismarine.github.io/), another tool to convert JavaScript code into DF.
+Welcome to the Netherrack documentation. Netherrack is a tool to convert Python code into DF code templates. This project is based on [Prismarine](https://dfprismarine.github.io/), another tool to convert JavaScript code into DF. [Skip to Documentation](#Reference)
 
 Here's a basic example of using Netherrack:
 ```py
@@ -16,6 +16,18 @@ player("SendMessage", joins, "players have joined this plot so far.")
 cmd, data = line.build() # Builds the line and outputs a give command and json data
 print(cmd)
 ```
+# When to use Netherrack?
+Netherrack is meant to be used in parallel with DFs coding system. This is because _some_ things are easier to do in text-based programming, while others are not.
+### When you SHOULD NOT use Netherrack
+- Inventory GUIs
+- Basic Systems
+- etc
+### When you SHOULD use Netherrack
+- Quest / XP Systems
+- Dialogue
+- Tedious tasks with multiple outcomes
+- Heavy calculations
+- etc
 # Reference
 _*argument_ = argument is optional.
 **value** = the default value.
