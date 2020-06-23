@@ -20,6 +20,23 @@ print(cmd)
 _*argument_ = argument is optional.
 **value** = the default value.
 
+## Important
+- [Codeline](#Line-Variable)
+- [Optional](#Optional-Variables)
+- [Actions](#Actions)
+- [Building](#Building)
+## Variable Items
+- [Variable](#Variable)
+- [Location](#Location)
+- [Particle](#Particle)
+- [Potion](#Potion)
+- [Sound](#Sound)
+## IF / Repeat
+- [IFs](#IF-Variable)
+- [Else](#Else)
+- [Repeat](#Repeat)
+[Misc Section](#Misc)
+
 # Important
 To start a Netherrack program you must first import netherrack. You can do this with `import netherrack`, or to have a special variable name: `import netherrack as df`.
 ## Line Variable
@@ -159,6 +176,8 @@ player("SendMessage", "You jumped while sprinting!")
 c()
 ```
 ## Else
+Else reverses any IF statement at the closing bracket.
+### Usage
 Else can be used at the end of any close statement like so:
 ```py
 line.ifPlayer('isSprinting')
@@ -167,4 +186,26 @@ line.close()._else()
 player("SendMessage", "You are not spriniting!")
 line.close()
 ```
-This is valid for all types of IFs.
+## Repeat
+Works the same as IFs, with some changed arguments.
+```py
+<line>.repeat(action, items)
+```
+### Usage
+Here's a simple case of repeating some code multiple times:
+```py
+line = df.Line("event", "Join")
+repeat = line.repeat
+
+repeat("Multiple", 10)
+line.playerAction("SendMessage", "This is the power of repeats!")
+line.close()
+```
+
+# Misc
+## Calling functions
+It's possible to call functions and processes using `line.callFunc(name)` and `line.callProc(name)`.
+## Tags
+Tags are automatically added as their default option where needed. Currently, there is no way to modify tags, as it would be confusing for the user. We may add a way to change them in the future.
+
+Thanks to EnjoyYourBan for providing an [action list](https://raw.githubusercontent.com/EnjoyYourBan/enjoyyourban.github.io/master/actions.json) with all the tags!
