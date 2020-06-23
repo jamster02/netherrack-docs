@@ -24,8 +24,8 @@ _*argument_ = argument is optional.
 To start a Netherrack program you must first import netherrack. You can do this with `import netherrack`, or to have a special variable name: `import netherrack as df`.
 ## Line Variable
 To initialise a codeline, you can use the `df.Line(eventType, eventName)` class.
-- eventType - the type of event. Currently `event` and `entity_event` are supported.
-- eventName - the name of the event. For example, `Join` or `Jump`.
+- eventType - the type of event. Supported types are `event`, `entity_event`, `func` and `process`.
+- eventName - the name of the event. For example, `Join` or `Jump`. This can be anything for functions and processes.
 ## Optional Variables
 It's also recommened to set up some variables, although it is purely up to you. For ease of use however, you should set variables for some or all of the following functions:
 
@@ -127,3 +127,44 @@ player("PlaySound", Sound("Pling"))
 player("SendMessage", r"%default has joined!").target("All Players")
 ```
 
+# IFs & Repeats
+Note that with this system, nesting IFs & Repeats inside each other can be a bit messy. For now, use special whitespace between IFs for better readability. We may come up with a better system in the future, however python cannot have functions inside functions, so nothing's certain.
+## IF Variable
+If variable works much like other actions, however it takes an operation as an argument. Anything after the If Variable will be evaluated as being inside of it, until reaching a `line.close()` function.
+### Usage
+```py
+line = df.Line('event', 'Join')
+player = line.playerAction
+
+joined = df.Variable(r"%default joined", "saved")
+
+line.ifVar("=", joined, 0)
+line.setVar("+=", joined)
+player("SendMessage", r"%default joined for the first time!").target("All Players")
+line.close()
+
+cmd, data = line.build()
+```
+## IF Player
+If player, If entity and If game behave much like If variable, except with actions instead of operations as arguments. Valid actions are `IsSprinting`, `NameEq`, `etc`.
+### Usage
+Note here that `line.close()` can also be used as a custom variable:
+```py
+line = df.Line('event', 'Jump')
+player = line.playerAction
+c = line.close
+
+line.ifPlayer('isSprinting')
+player("SendMessage", "You jumped while sprinting!")
+c()
+```
+## Else
+Else can be used at the end of any close statement like so:
+```py
+line.ifPlayer('isSprinting')
+player("SendMessage", "You jumped while sprinting!")
+line.close().else()
+player("SendMessage", "You are not spriniting!")
+line.close()
+```
+This is valid for all types of IFs.
