@@ -16,6 +16,7 @@ line.close() # ends the if statement
 cmd, data = line.build() # Builds the line and outputs a give command and json data
 print(cmd)
 ```
+
 # When to use Netherrack?
 Netherrack is meant to be used in parallel with DFs coding system. This is because _some_ things are easier to do in text-based programming, while others are not.
 ### When you SHOULD NOT use Netherrack
@@ -24,6 +25,7 @@ Netherrack is meant to be used in parallel with DFs coding system. This is becau
 - Mob spawning
 - Location checks
 - etc
+
 ### When you SHOULD use Netherrack
 - Quest / XP Systems
 - Dialogue
@@ -31,6 +33,7 @@ Netherrack is meant to be used in parallel with DFs coding system. This is becau
 - Heavy calculations
 - Encryption & Complicated text manipulation
 - etc
+
 # Reference
 _*argument_ = argument is optional.
 **value** = the default value.
@@ -40,16 +43,19 @@ _*argument_ = argument is optional.
 - [Optional](#Optional-Variables)
 - [Actions](#Actions)
 - [Building](#Building)
+
 ## Variable Items
 - [Variable](#Variable)
 - [Location](#Location)
 - [Particle](#Particle)
 - [Potion](#Potion)
 - [Sound](#Sound)
+
 ## IF / Repeat
 - [IFs](#IF-Variable)
 - [Else](#Else)
 - [Repeat](#Repeat)
+
 ## Misc
 - [Call Functions](#Calling-Functions)
 - [Select Object](#Select-Object)
@@ -57,14 +63,17 @@ _*argument_ = argument is optional.
 
 # Important
 To start a Netherrack program you must first import netherrack. You can do this with `from netherrack import netherrack`, or to have a special variable name: `from netherrack import netherrack as df`.
+
 ## Events
 To initialise a codeline, you can use the `df.Line(eventType, eventName)` class.
 - eventType - the type of event. Supported types are `event`, `entity_event`, `func` and `process`.
 - eventName - the name of the event. For example, `Join` or `Jump`. This can be anything for functions and processes.
+
 ## Optional Variables
 It's also recommened to set up some variables, although it is purely up to you. For ease of use however, you should set variables for some or all of the following functions:
 
 `line.playerAction`, `line.ifVar`, `line.setVar`, `etc`.
+
 ## Actions
 Most codeblocks require the `action` parameter, followed by the chest parameters. Valid action codeblocks are `playerAction`, `gameAction`, `entityAction`, `Control` and `setVar`.
 ### Usage
@@ -78,6 +87,7 @@ line.playerAction("SendMessage", "Woosh!")
 # And all of the other data types!
 line.playerAction("Teleport", df.Location(15, 70, 15))
 ```
+
 ### Targets
 You can also target groups of players by appending `.target` to the action!
 ```py
@@ -95,6 +105,7 @@ Note that you must specify variables for all three returns, or set a list and ta
 
 # Variable Items
 Numbers and text passed to actions are automatically converted to the correct format. However, you can still create variable items for those types using the `df.Text(text)` and `df.Num(value)` classes.
+
 ## Variable
 Represents a dynamic variable item.
 ### Class
@@ -103,6 +114,7 @@ Variable(name, *type)
 ```
 - name - The name of the variable item.
 - _*type_ - The type of the variable. Can be **"unsaved"**, "saved" or "local".
+
 ## Location
 Represents a location in-game.
 ### Class
@@ -117,6 +129,7 @@ loc = Location(15.5, 70, 20)
 line = df.Line('event', 'Join')
 line.playerAction("Teleport", loc)
 ```
+
 ## Game Value
 Represents a Game Value variable.
 ### Class
@@ -125,6 +138,7 @@ GameValue(type, *target)
 ```
 - type - The name of the value.
 - _*target_ - The target of the value, defaults to **Default**.
+
 The `GameValue.target` function can set the target even after initialisation.
 ### Usage
 ```py
@@ -139,6 +153,7 @@ Represents a particle item in-game.
 Particle(type)
 ```
 - type - The particle effect.
+
 Additional manipulation of particles will be added in the future.
 ### Usage
 ```py
@@ -154,6 +169,7 @@ Potion(effect, length, *amplifier)
 - effect - The potion effect name.
 - length - The length of the potion effect in seconds.
 - _*amplifier_ - The potion amplifier, defaults to **1**.
+
 ### Usage
 ```py
 line = df.Line("event", "Join")
@@ -169,6 +185,7 @@ Sound(noise, *pitch, *volume)
 - noise - The sound that is represented.
 - _*pitch_ - The pitch the sound is at, defaults to **1**.
 - _*volume_ - The volume the sound is at, defaults to **1**.
+
 ### Usage
 ```py
 line = df.Line("func", "xp")
