@@ -87,11 +87,12 @@ line.playerAction("SendMessage", r"%default has leveled up!").target("All Player
 ```
 
 ## Building
-To build your line and convert it into a template, you must use the `line.build` function. This will return a /give command, followed by the raw json data. You can get the template into minecraft with something like this:
+To build your line and convert it into a template, you must use the `line.build` function. This will return a /give command, followed by the raw json data and encrypted data. You can get the template into minecraft with something like this:
 ```py
-cmd, data = line.build()
+cmd, data, encrypted = line.build()
 print(cmd)
 ```
+The latter 2 return types are optional.
 
 # Variable Items
 Numbers and text passed to actions are automatically converted to the correct format. However, you can still create variable items for those types using the `df.Text(text)` and `df.Num(value)` classes.
@@ -110,7 +111,7 @@ Represents a location in-game.
 Location(x, *y, *z, *pitch, *yaw)
 ```
 Locations are relative to the plot, meaning `(x=0, z=0)` is the bottom left corner of the plot.
-### Example
+### Usage
 ```py
 loc = Location(15.5, 70, 20)
 
@@ -140,7 +141,7 @@ Particle(type)
 ```
 - type - The particle effect.
 Additional manipulation of particles will be added in the future.
-### Example
+### Usage
 ```py
 line = df.Line("event", "Join")
 line.gameAction("SpawnParticle", Particle("Smoke"), Location(15.5, 20, 3))
@@ -154,7 +155,7 @@ Potion(effect, length, *amplifier)
 - effect - The potion effect name.
 - length - The length of the potion effect in seconds.
 - _*amplifier_ - The potion amplifier, defaults to **1**.
-### Example
+### Usage
 ```py
 line = df.Line("event", "Join")
 line.playerAction("GiveEffect", Potion("Blindness", 40), Potion("Slowness", 40, 5))
@@ -169,7 +170,7 @@ Sound(noise, *pitch, *volume)
 - noise - The sound that is represented.
 - _*pitch_ - The pitch the sound is at, defaults to **1**.
 - _*volume_ - The volume the sound is at, defaults to **1**.
-### Example
+### Usage
 ```py
 line = df.Line("func", "xp")
 player = line.playerAction
@@ -253,9 +254,26 @@ line.close()
 
 # Misc
 ## Select Object
-Coming soon!
+Select Object is much like other action block types, but it requires a sub-action.
+### Class
+```py
+<line>.selectObj(action, sub-action, *items)
+```
+- action - The first selection of the block. e.g. `Shooter`, `Killer`, `etc.`
+- sub-action - This is only used for IF selections, leave a random action if not used. e.g. `EStandingOn`, `VarExists`, `etc.`
+- items - Chest parameters, if necessary
+### Usage
+```py
+line = df.Line('event', 'KillPlayer')
+
+line.selectObj('Killer')
+line.playerAction('SendMessage', 'Not cool!')
+line.playerAction('Damage', 10)
+```
 ## Calling functions
 It's possible to call functions and processes using `line.callFunc(name)` and `line.callProc(name)`.
+## Color codes
+Color codes will be supported in a future update. As of now, they cannot be used easily.
 ## Tags
 Tags are automatically added as their default option where needed. Currently, there is no way to modify tags, as it would be confusing for the user. We may add a way to change them in the future.
 
