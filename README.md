@@ -6,12 +6,12 @@ Here's a basic example of using Netherrack:
 from netherrack import netherrack as df
 
 # Creates a new line with Player Event: Join
-line = df.Line('event', 'Join')
+line = df.Line('event', 'RightClick')
 player = line.playerAction # Ease of use
 
-joins = df.Variable("joins", "saved") # Initialises a SAVE "joins" variable
-line.setVar("+=", joins)
-player("SendMessage", joins, "players have joined this plot so far.")
+line.ifPlayer("IsLookingAt", df.Location(25.5, 5, 30.0)) # checks if player is looking at a location
+player("SendMessage", "You're looking at the Sacred Netherrack!")
+line.close() # ends the if statement
 
 cmd, data = line.build() # Builds the line and outputs a give command and json data
 print(cmd)
@@ -36,7 +36,7 @@ _*argument_ = argument is optional.
 **value** = the default value.
 
 ## Important
-- [Events](#Line-Variable)
+- [Events](#Events)
 - [Optional](#Optional-Variables)
 - [Actions](#Actions)
 - [Building](#Building)
@@ -57,7 +57,7 @@ _*argument_ = argument is optional.
 
 # Important
 To start a Netherrack program you must first import netherrack. You can do this with `from netherrack import netherrack`, or to have a special variable name: `from netherrack import netherrack as df`.
-## Line Variable
+## Events
 To initialise a codeline, you can use the `df.Line(eventType, eventName)` class.
 - eventType - the type of event. Supported types are `event`, `entity_event`, `func` and `process`.
 - eventName - the name of the event. For example, `Join` or `Jump`. This can be anything for functions and processes.
@@ -69,15 +69,14 @@ It's also recommened to set up some variables, although it is purely up to you. 
 Most codeblocks require the `action` parameter, followed by the chest parameters. Valid action codeblocks are `playerAction`, `gameAction`, `entityAction`, `Control` and `setVar`.
 ### Usage
 ```py
-<line>.playerAction("SendMessage", "This is a send message.", 1337, "is a number!")
+# It supports numbers...
+line.playerAction("LaunchFwd", 10)
 
-<line>.gameAction("CancelEvent")
+# And text...
+line.playerAction("SendMessage", "Woosh!")
 
-# You can also use variables and other data types as arguments!
-clicks = df.Variable("clicks", "saved")
-
-<line>.setVar("+=", clicks)
-<line>.playerAction("SendMessage", "The button has been clicked", clicks, "times")
+# And all of the other data types!
+line.playerAction("Teleport", df.Location(15, 70, 15))
 ```
 ### Targets
 You can also target groups of players by appending `.target` to the action!
@@ -92,7 +91,7 @@ To build your line and convert it into a template, you must use the `line.build`
 cmd, data, encrypted = line.build()
 print(cmd)
 ```
-The latter 2 return types are optional.
+Note that you must specify variables for all three returns, or set a list and take the data from there.
 
 # Variable Items
 Numbers and text passed to actions are automatically converted to the correct format. However, you can still create variable items for those types using the `df.Text(text)` and `df.Num(value)` classes.
