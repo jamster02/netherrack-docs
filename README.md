@@ -3,7 +3,7 @@ Welcome to the Netherrack documentation. Netherrack is a tool to convert Python 
 
 Here's a basic example of using Netherrack:
 ```py
-import netherrack as df
+from netherrack import netherrack as df
 
 # Creates a new line with Player Event: Join
 line = df.Line('event', 'Join')
@@ -56,7 +56,7 @@ _*argument_ = argument is optional.
 - [Tags](#Tags)
 
 # Important
-To start a Netherrack program you must first import netherrack. You can do this with `import netherrack`, or to have a special variable name: `import netherrack as df`.
+To start a Netherrack program you must first import netherrack. You can do this with `from netherrack import netherrack`, or to have a special variable name: `from netherrack import netherrack as df`.
 ## Line Variable
 To initialise a codeline, you can use the `df.Line(eventType, eventName)` class.
 - eventType - the type of event. Supported types are `event`, `entity_event`, `func` and `process`.
