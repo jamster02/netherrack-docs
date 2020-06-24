@@ -47,6 +47,7 @@ _*argument_ = argument is optional.
 ## Variable Items
 - [Variable](#Variable)
 - [Location](#Location)
+- [Game Value](#Game-Value)
 - [Particle](#Particle)
 - [Potion](#Potion)
 - [Sound](#Sound)
