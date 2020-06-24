@@ -290,7 +290,7 @@ line.playerAction('Damage', 10)
 ## Calling functions
 It's possible to call functions and processes using `line.callFunc(name)` and `line.callProc(name)`.
 ## Color codes
-Color codes will be supported in a future update. As of now, they cannot be used easily.
+Color codes are now supported! `&` is automatically converted when passed in to the `Text` class or as an argument.
 ## Tags
 Tags are automatically added as their default option where needed. Currently, there is no way to modify tags, as it would be confusing for the user. We may add a way to change them in the future.
 
