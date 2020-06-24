@@ -5,7 +5,7 @@ Here's a basic example of using Netherrack:
 ```py
 from netherrack import netherrack as df
 
-# Creates a new line with Player Event: Join
+# Creates a new line with Player Event: RightClick
 line = df.Line('event', 'RightClick')
 player = line.playerAction # Ease of use
 
