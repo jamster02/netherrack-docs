@@ -69,21 +69,21 @@ It's also recommened to set up some variables, although it is purely up to you. 
 Most codeblocks require the `action` parameter, followed by the chest parameters. Valid action codeblocks are `playerAction`, `gameAction`, `entityAction`, `Control` and `setVar`.
 ### Usage
 ```py
-<line>.playerAction("SendMessage", "This supports numbers!", 1337)
+<line>.playerAction("SendMessage", "This is a send message.", 1337, "is a number!")
 
 <line>.gameAction("CancelEvent")
 
 # You can also use variables and other data types as arguments!
-joins = df.Variable("joins", "saved")
+clicks = df.Variable("clicks", "saved")
 
-<line>.setVar("+=", joins)
-<line>.playerAction("SendMessage", r"Hello %default! You joined at position", joins)
+<line>.setVar("+=", clicks)
+<line>.playerAction("SendMessage", "The button has been clicked", clicks, "times")
 ```
 ### Targets
 You can also target groups of players by appending `.target` to the action!
 ```py
-line = df.Line("event", "Join")
-line.playerAction("SendMessage", r"%default has joined!").target("All Players")
+line = df.Line("func", "xp")
+line.playerAction("SendMessage", r"%default has leveled up!").target("All Players")
 ```
 
 ## Building
@@ -143,7 +143,7 @@ Additional manipulation of particles will be added in the future.
 ### Example
 ```py
 line = df.Line("event", "Join")
-line.playerAction("GiveItems", Particle("Cloud")
+line.gameAction("SpawnParticle", Particle("Smoke"), Location(15.5, 20, 3))
 ```
 ## Potion
 Represents a potion item in-game.
@@ -157,7 +157,8 @@ Potion(effect, length, *amplifier)
 ### Example
 ```py
 line = df.Line("event", "Join")
-line.playerAction("GiveEffect", Potion("Blindness", 60))
+line.playerAction("GiveEffect", Potion("Blindness", 40), Potion("Slowness", 40, 5))
+# Supports as many items as you want! ^
 ```
 ## Sound
 Represents a sound item.
@@ -170,11 +171,11 @@ Sound(noise, *pitch, *volume)
 - _*volume_ - The volume the sound is at, defaults to **1**.
 ### Example
 ```py
-line = df.Line("event", "Join")
+line = df.Line("func", "xp")
 player = line.playerAction
 
 player("PlaySound", Sound("Pling"))
-player("SendMessage", r"%default has joined!").target("All Players")
+player("SendMessage", r"You gained 5 XP!")
 ```
 
 # IFs & Repeats
@@ -204,19 +205,34 @@ line = df.Line('event', 'Jump')
 player = line.playerAction
 c = line.close
 
-line.ifPlayer('isSprinting')
-player("SendMessage", "You jumped while sprinting!")
+line.ifPlayer('IsSneaking')
+player("SendMessage", "You jumped while sneaking!")
 c()
 ```
 ## Else
-Else reverses any IF statement at the closing bracket.
+Else executes different code when an IF statement isn't true.
 ### Usage
 Else can be used at the end of any close statement like so:
 ```py
-line.ifPlayer('isSprinting')
-player("SendMessage", "You jumped while sprinting!")
+line = df.Line('event', 'Jump')
+player = line.playerAction
+
+line.ifPlayer('IsSneaking')
+player("SendMessage", "You jumped while sneaking!")
 line.close()._else()
-player("SendMessage", "You are not spriniting!")
+player("SendMessage", "You are not sneaking!")
+line.close()
+```
+## NOT
+NOT inverts the IF statement, e.g. `IsSprinting` becomes `Is Not Sprinting`.
+### Usage
+NOT is used in the same manner as else, but at the beginning of the statement rather than the end.
+```py
+line = df.Line('event', 'Jump')
+player = line.playerAction
+
+line.ifPlayer('IsSprinting')._not
+player("SendMessage", "You are not sprinting!")
 line.close()
 ```
 ## Repeat
