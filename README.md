@@ -64,6 +64,7 @@ _*argument_ = argument is optional.
 - [Call Functions](#Calling-Functions)
 - [Select Object](#Select-Object)
 - [Tags](#Tags)
+- [Discord](#Discord)
 
 # Important
 To start a Netherrack program you must first import netherrack. You can do this with `from netherrack import netherrack`, or to have a special variable name: `from netherrack import netherrack as df`.
@@ -298,3 +299,5 @@ Color codes are now supported! `&` is automatically converted when passed in to 
 Tags are automatically added as their default option where needed. Currently, there is no way to modify tags, as it would be confusing for the user. We may add a way to change them in the future.
 
 Thanks to EnjoyYourBan for providing an [action list](https://raw.githubusercontent.com/EnjoyYourBan/enjoyyourban.github.io/master/actions.json) with all the tags!
+## Discord
+Netherrack has a [Discord](https://discord.gg/dXsXKXX)!
