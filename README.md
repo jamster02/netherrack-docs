@@ -44,6 +44,9 @@ _*argument_ = argument is optional.
 - [Actions](#Actions)
 - [Building](#Building)
 
+## Add-ons
+- [Netherite](Netherite.md)
+
 ## Variable Items
 - [Variable](#Variable)
 - [Location](#Location)
