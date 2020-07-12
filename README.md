@@ -13,7 +13,7 @@ line.ifPlayer("IsLookingAt", df.Location(25.5, 5, 30.0)) # checks if player is l
 player("SendMessage", "You're looking at the Sacred Netherrack!")
 line.close() # ends the if statement
 
-cmd, data = line.build() # Builds the line and outputs a give command and json data
+cmd, data, enc = line.build() # Builds the line and outputs a give command and json data
 print(cmd)
 ```
 
@@ -106,7 +106,7 @@ To build your line and convert it into a template, you must use the `line.build`
 cmd, data, encrypted = line.build()
 print(cmd)
 ```
-Note that you must specify variables for all three returns, or set a list and take the data from there.
+Note that you must specify variables for all three returns.
 
 # Variable Items
 Numbers and text passed to actions are automatically converted to the correct format. However, you can still create variable items for those types using the `df.Text(text)` and `df.Num(value)` classes.
