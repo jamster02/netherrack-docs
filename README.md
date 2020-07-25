@@ -172,7 +172,7 @@ Represents a potion item in-game.
 Potion(effect, length, *amplifier)
 ```
 - effect - The potion effect name.
-- length - The length of the potion effect in seconds.
+- length - The length of the potion effect in ticks.
 - _*amplifier_ - The potion amplifier, defaults to **1**.
 
 ### Usage
