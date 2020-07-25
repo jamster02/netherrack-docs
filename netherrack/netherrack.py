@@ -28,6 +28,7 @@ class Close:
     def _else(self):
         self.line.code['blocks'].append({"id":"block","block":"else"})
         self.line.code['blocks'].append({"id":"bracket","direct":"open","type":"norm"})
+        self.line.brackets.append("normal") // Else statement needs to open brackets
 
 class Variable:
     def __init__(self, name, varType="unsaved"):
