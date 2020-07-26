@@ -92,6 +92,13 @@ class Sound:
     def compile(self):
         return {"item":{"id":"snd","data":{"sound": self.noise,"pitch": self.pitch,"vol": self.vol}},"slot":0}
 
+class Item:
+    def __init__(self, item_id, count=1, damage=0):
+        self.id, self.count, self.damage = item_id, count, damage
+
+    def compile(self):
+        return {"item":{"id":"item","data":{"item":'{DF_NBT:2230,id:"'+self.id+'",tag:{Damage:'+str(self.damage)+'},Count:'+str(self.count)+'}'}},"slot":0}
+
 class Line:
     def __init__(self, eventType, eventName):
         if eventType not in ("func", "process"):
